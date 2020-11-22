@@ -1,98 +1,59 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <div class="hello">
-      <p>
-        For a guide and recipes on how to configure / customize this project,<br />
-        check out the
-        <a href="https://cli.vuejs.org" target="_blank" rel="noopener"
-          >vue-cli documentation</a
-        >.
-      </p>
-      <h3>Installed CLI Plugins</h3>
-      <ul>
-        <li>
-          <a
-            href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel"
-            target="_blank"
-            rel="noopener"
-            >babel</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint"
-            target="_blank"
-            rel="noopener"
-            >eslint</a
-          >
-        </li>
-      </ul>
-      <h3>Essential Links</h3>
-      <ul>
-        <li>
-          <a href="https://vuejs.org" target="_blank" rel="noopener"
-            >Core Docs</a
-          >
-        </li>
-        <li>
-          <a href="https://forum.vuejs.org" target="_blank" rel="noopener"
-            >Forum</a
-          >
-        </li>
-        <li>
-          <a href="https://chat.vuejs.org" target="_blank" rel="noopener"
-            >Community Chat</a
-          >
-        </li>
-        <li>
-          <a href="https://twitter.com/vuejs" target="_blank" rel="noopener"
-            >Twitter</a
-          >
-        </li>
-        <li>
-          <a href="https://news.vuejs.org" target="_blank" rel="noopener"
-            >News</a
-          >
-        </li>
-      </ul>
-      <h3>Ecosystem</h3>
-      <ul>
-        <li>
-          <a href="https://router.vuejs.org" target="_blank" rel="noopener"
-            >vue-router</a
-          >
-        </li>
-        <li>
-          <a href="https://vuex.vuejs.org" target="_blank" rel="noopener"
-            >vuex</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://github.com/vuejs/vue-devtools#vue-devtools"
-            target="_blank"
-            rel="noopener"
-            >vue-devtools</a
-          >
-        </li>
-        <li>
-          <a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener"
-            >vue-loader</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://github.com/vuejs/awesome-vue"
-            target="_blank"
-            rel="noopener"
-            >awesome-vue</a
-          >
-        </li>
-      </ul>
-    </div>
+    <!-- 组件的静态传值 -->
+    <Static message = "i am static meassage"></Static>
+    <div>App组件内部倒计时60s:{{timeNum}}</div>
+    <!-- 组件的动态传值 -->
+    <Dynamic :message = "timeNum" :obj = "obj" :arr = "arr" v-bind = "obj"></Dynamic>
+    <!-- 属性不绑定v-bind，直接传递的话，prop永远是string类型 -->
+    <PropValidator :propA = "propString" :propC = 1></PropValidator>
+    <NoPropsAttribute data-date-picker="activated" class="form-control" style="background: red"></NoPropsAttribute>
   </div>
 </template>
+
+<script>
+import Static from './components/propsTransfer/Static'
+import Dynamic from './components/propsTransfer/Dynamic'
+import PropValidator from './components/propsTransfer/PropValidator'
+import NoPropsAttribute from './components/propsTransfer/NoPropsAttribute'
+
+export default {
+  name: 'App',
+  data() {
+    return {
+      timer: null,
+      timeNum: 60,
+      obj: {
+        id: 1,
+        context: 'i am obj'
+      },
+      arr: [1, 2],
+      propString: 'i am prop string',
+      propsArr: [1,2,3]
+    }
+  },
+  mounted() {
+    this.timer = setInterval(() => {
+      if(this.timeNum === 1) {
+        clearInterval(this.timer)
+        this.timer = null
+      }
+      this.timeNum -= 1
+    }, 1000)
+  },
+  beforeDestroy(){
+    clearInterval(this.timer)
+    this.timer = null
+  },
+  components: {
+    Static,
+    Dynamic,
+    PropValidator,
+    NoPropsAttribute
+  }
+  
+}
+</script>
 
 <style>
 #app {
@@ -102,19 +63,5 @@
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
 }
 </style>

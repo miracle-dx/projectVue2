@@ -1,4 +1,7 @@
 # study
+note:
+time:2020.11.22
+title:props传递参数
 
 ## Project setup
 ```
