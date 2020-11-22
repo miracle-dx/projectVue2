@@ -1,7 +1,10 @@
 # study
 note:
-time:2020.11.22
-title:props传递参数
+time: 2020.11.22
+title: props传递参数
+
+time: 2020.11.22
+title: 组件的自定义事件
 
 ## Project setup
 ```
