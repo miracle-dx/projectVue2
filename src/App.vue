@@ -20,6 +20,8 @@
     <!-- $listeners专门为解决这个问题而生，里面包含了作用在这个组件上的所有监听器，从而不必再使用native修饰符 -->
     {{listeners}}
     <EventCompL v-on:focus="onFocus" v-model="listeners"></EventCompL>
+    <EventBusCompA></EventBusCompA>
+    <EventBusCompB></EventBusCompB>
   </div>
 </template>
 
@@ -31,6 +33,8 @@ import NoPropsAttribute from './components/propsTransfer/NoPropsAttribute'
 import EventComp from './components/customEventsOfComp/EventComp'
 import EventCompM from './components/customEventsOfComp/EventCompM'
 import EventCompL from './components/customEventsOfComp/EventCompL'
+import EventBusCompA from './components/eventBus/EventBusCompA'
+import EventBusCompB from './components/eventBus/EventBusCompB'
 export default {
   name: 'App',
   data() {
@@ -76,7 +80,9 @@ export default {
     NoPropsAttribute,
     EventComp,
     EventCompM,
-    EventCompL
+    EventCompL,
+    EventBusCompA,
+    EventBusCompB
   }
   
 }
