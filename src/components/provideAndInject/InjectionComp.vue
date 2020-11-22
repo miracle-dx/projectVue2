@@ -1,7 +1,7 @@
 <template>
   <div>
       <div>count: {{count}}</div>
-      <InjectionChild></InjectionChild>
+      <InjectionChild v-bind:count="count" v-bind="$attrs"></InjectionChild>
   </div>
 </template>
 
@@ -13,6 +13,9 @@ export default {
         return {
             count: 0
         }
+    },
+    props: {
+        attrs: String
     },
     methods: {
         addCount() {

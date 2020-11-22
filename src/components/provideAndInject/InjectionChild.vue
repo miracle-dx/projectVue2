@@ -1,5 +1,8 @@
 <template>
-    <InjectionGrandson></InjectionGrandson>
+    <div>
+        <InjectionGrandson  v-bind="$attrs"></InjectionGrandson>
+        <div>attrs: {{attrString}}</div>
+    </div>
 </template>
 
 <script>
@@ -8,6 +11,9 @@ export default {
     name: 'InjectionChild',
     components: {
         InjectionGrandson
+    },
+    props: {
+        attrString: String
     }
 }
 </script>

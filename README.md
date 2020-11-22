@@ -12,6 +12,9 @@ title: EventBus
 time: 2020.11.22
 title: 依赖注入
 
+time: 2020.11.22
+title: $attrs学习
+
 ## Project setup
 ```
 npm install

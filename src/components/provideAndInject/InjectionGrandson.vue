@@ -1,11 +1,17 @@
 <template>
-    <button v-on:click="addCount">add</button>
+    <div>
+        <button v-on:click="addCount">add</button>
+        <p>count: {{count}}</p>
+    </div>
 </template>
 
 <script>
 export default {
     name: 'InjectionGrandson',
-    inject: ['addCount']
+    inject: ['addCount'],
+    props: {
+        count: Number
+    }
 }
 </script>
 

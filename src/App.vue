@@ -22,7 +22,7 @@
     <EventCompL v-on:focus="onFocus" v-model="listeners"></EventCompL>
     <EventBusCompA></EventBusCompA>
     <EventBusCompB></EventBusCompB>
-    <InjectionComp></InjectionComp>
+    <InjectionComp v-bind:attrString="attrs"></InjectionComp>
   </div>
 </template>
 
@@ -41,6 +41,7 @@ export default {
   name: 'App',
   data() {
     return {
+      attrs: 'i am a message from App',
       message: 'string',
       listeners: 'listeners',
       timer: null,
