@@ -9,6 +9,9 @@ title: 组件的自定义事件
 time: 2020.11.22
 title: EventBus
 
+time: 2020.11.22
+title: 依赖注入
+
 ## Project setup
 ```
 npm install

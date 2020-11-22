@@ -22,6 +22,7 @@
     <EventCompL v-on:focus="onFocus" v-model="listeners"></EventCompL>
     <EventBusCompA></EventBusCompA>
     <EventBusCompB></EventBusCompB>
+    <InjectionComp></InjectionComp>
   </div>
 </template>
 
@@ -35,6 +36,7 @@ import EventCompM from './components/customEventsOfComp/EventCompM'
 import EventCompL from './components/customEventsOfComp/EventCompL'
 import EventBusCompA from './components/eventBus/EventBusCompA'
 import EventBusCompB from './components/eventBus/EventBusCompB'
+import InjectionComp from './components/provideAndInject/InjectionComp'
 export default {
   name: 'App',
   data() {
@@ -82,7 +84,8 @@ export default {
     EventCompM,
     EventCompL,
     EventBusCompA,
-    EventBusCompB
+    EventBusCompB,
+    InjectionComp
   }
   
 }
